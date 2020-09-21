@@ -148,7 +148,7 @@ function getPasswordOptions() {
     useUppercaseChars === false &&
     useNumericChars === false
   ) {
-    alert("You must select at least one character type for inclusion in your password");
+    alert("You must select at least one character type for inclusion in your password. Please try again.");
     return;
   }
 
@@ -196,21 +196,21 @@ function generatePassword() {
 
   // Conditional statement that adds array of lowercase characters into array into array of possible characters if option was selected by user
   // Push new random lowercase character to guaranteedChars
-  if (options.lowercaseChars) {
+  if (options.useLowercaseChars) {
     possibleChars = possibleChars.concat(lowercaseChars);
     guaranteedChars.push(getRandom(lowercaseChars));
   }
 
   // Conditional statement that adds array of uppercase characters into array into array of possible characters if option was selected by user
   // Push new random uppercase character to guaranteedChars
-  if (options.uppercaseChars) {
+  if (options.useUppercaseChars) {
     possibleChars = possibleChars.concat(uppercaseChars);
     guaranteedChars.push(getRandom(uppercaseChars));
   }
 
   // Conditional statement that adds array of numerical characters into array into array of possible characters if option was selected by user
   // Push new random numerical character to guaranteedChars
-  if (options.numericChars) {
+  if (options.useNumericChars) {
     possibleChars = possibleChars.concat(numericChars);
     guaranteedChars.push(getRandom(numericChars));
   }
