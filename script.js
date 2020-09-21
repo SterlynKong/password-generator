@@ -114,39 +114,55 @@ function getPasswordOptions() {
   var length = parseInt(
     prompt("Please enter the lenght of password required")
   )
-};
 
+  // Conditional statement to verifiy that the password length is a number. Re-prompts user to enter a number until statement is true
+  if (isNaN(length) === true || (length < 8) || (length > 128)) {
+    alert("The pasword length must be provided as a NUMBER larger than 7 but smaller than 129. Please try again!");
+    return;
+  };
 
-// Conditional statement to verifiy that the password length is a number. Re-prompts user to enter a number until statement is true
-if (isNaN(length) === true || (length < 8) || (length > 128)) {
-  alert("The pasword length must be provided as a NUMBER larger than 7 but smaller than 129. Please try again!");
-  return;
-};
+  // Variable to store boolean regrding the inclusion of special characters
+  var useSpecialChars = confirm(
+    "Click OK to confirm that special characters should be included"
+  );
 
+  // Variable to store boolean regrding the inclusion of lowercase characters
+  var useLowercaseChars = confirm(
+    "Click OK to confirm that lowercase characters should be included"
+  );
 
-// Variable to store boolean regrding the inclusion of special characters
-var useSpecialChars = confirm (
-  "Click OK to confirm that special characters should be included"
-);
+  // Variable to store boolean regrding the inclusion of uppercase characters
+  var useUppercaseChars = confirm(
+    "Click OK to confirm that uppercase characters should be included"
+  );
 
+  // Variable to store boolean regrding the inclusion of numerical characters
+  var useNumericChars = confirm(
+    "Click OK to confirm that numeric characters should be included"
+  );
 
-// Variable to store boolean regrding the inclusion of lowercase characters
-var useLowercaseChars = confirm (
-  "Click OK to confirm that lowercase characters should be included"
-);
+  // Conditional statement to check if user has not chosen to include any types of characters. Password generator ends if all four statements are false
+  if (
+    useSpecialChars === false &&
+    useLowercaseChars === false &&
+    useUppercaseChars === false &&
+    useNumericChars === false
+  ) {
+    alert("You must select at least one character type for inclusion in your password");
+    return;
+  }
 
+  // Object to store user selections
+  var passwordOptions = {
+    lenght: length,
+    useSpecialChars: useSpecialChars,
+    useLowercaseChars: useLowercaseChars,
+    useUppercaseChars: useUppercaseChars,
+    useNumericChars: useNumericChars
+  };
 
-// Variable to store boolean regrding the inclusion of uppercase characters
-var useUppercaseChars = confirm (
-  "Click OK to confirm that uppercase characters should be included"
-);
-
-
-// Variable to store boolean regrding the inclusion of numerical characters
-var useNumericChars = confirm (
-  "Click OK to confirm that numeric characters should be included"
-);
-
+  return passwordOptions;
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
