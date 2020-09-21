@@ -17,4 +17,4 @@ The RANDOMLY generated password is then displayed to the user
 
 Application URL: https://sterlynkong.github.io/password-generator/
 
-Application image:
+Application image: ![Password Generator Screenshot](assets/images/password_generator_ss.png "Password Generator Screenshot")
