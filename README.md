@@ -15,7 +15,6 @@ Characters are then RANDOMLY selected and used to generate a password that meets
 
 The RANDOMLY generated password is then displayed to the user
 
-Application URL:
+Application URL: https://sterlynkong.github.io/password-generator/
 
 Application image:
-
