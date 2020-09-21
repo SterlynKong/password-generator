@@ -1,8 +1,8 @@
 # Password Generator Web Application
 
-## This application considers special characters from the [list of password special characters found on the OWASP website](https://www.owasp.org/index.php/Password_special_characters) as well the english alphabet in both lower and upper cases along with the numbers 0 to 9 in order to generate as random password between 8 and 128 characters in length.
+## This application considers special characters from the [list of password special characters found on the OWASP website](https://www.owasp.org/index.php/Password_special_characters) as well the english alphabet in both lower and upper cases along with the numbers 0 to 9 in order to generate a random password between 8 and 128 characters in length.
 
-**### The process follows these steps:**
+###**The process follows these steps:**
 1. Prompt user for password length
 2. Validate that user has provided an integer between 7 and 129
 2. Prompt user to confirm inclusion of special characters
