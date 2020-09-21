@@ -112,7 +112,7 @@ var numericChars = [
 function getPasswordOptions() {
   // Variable to store selected password length from user input
   var length = parseInt(
-    prompt("Please enter the lenght of password required")
+    prompt("Please enter the length of password required")
   )
 
   // Conditional statement to verifiy that the password length is a number. Re-prompts user to enter a number until statement is true
@@ -154,7 +154,7 @@ function getPasswordOptions() {
 
   // Object to store user selections
   var passwordOptions = {
-    lenght: length,
+    length: length,
     useSpecialChars: useSpecialChars,
     useLowercaseChars: useLowercaseChars,
     useUppercaseChars: useUppercaseChars,
@@ -162,6 +162,73 @@ function getPasswordOptions() {
   };
 
   return passwordOptions;
+}
+
+
+// Functon to select a random element from and array
+function getRandom(arr) {
+  var randIndex = Math.floor(Math.random() * arr.length);
+  var randElement = arr[randIndex];
+
+  return randElement;
+}
+
+
+// Function to generate password that matches user selected criteria
+function generatePassword() {
+  var options = getPasswordOptions();
+  
+  // Array to store password as it is being put together
+  var passwordInProgress = [];
+
+  // Array to store types of characters to be included in password
+  var possibleChars = [];
+
+  // Array to store one of each user selected character type to ensure compliance with user selected choices
+  var guaranteedChars = [];
+
+  // Conditional statement that adds array of special characters into array into array of possible characters if option was selected by user
+  // Push new random special character to guaranteedChars
+  if (options.useSpecialChars) {
+    possibleChars = possibleChars.concat(specialChars);
+    guaranteedChars.push(getRandom(specialChars));
+  }
+
+  // Conditional statement that adds array of lowercase characters into array into array of possible characters if option was selected by user
+  // Push new random lowercase character to guaranteedChars
+  if (options.lowercaseChars) {
+    possibleChars = possibleChars.concat(lowercaseChars);
+    guaranteedChars.push(getRandom(lowercaseChars));
+  }
+
+  // Conditional statement that adds array of uppercase characters into array into array of possible characters if option was selected by user
+  // Push new random uppercase character to guaranteedChars
+  if (options.uppercaseChars) {
+    possibleChars = possibleChars.concat(uppercaseChars);
+    guaranteedChars.push(getRandom(uppercaseChars));
+  }
+
+  // Conditional statement that adds array of numerical characters into array into array of possible characters if option was selected by user
+  // Push new random numerical character to guaranteedChars
+  if (options.numericChars) {
+    possibleChars = possibleChars.concat(numericChars);
+    guaranteedChars.push(getRandom(numericChars));
+  }
+
+  // For loop to iterate over the possible characters array selecting items at random indices based on the length from the options object
+  for (var i = 0; i < options.length; i++) {
+    var possibleCharacter = getRandom(possibleChars);
+
+    passwordInProgress.push(possibleCharacter);
+  }
+
+  // Add one guaranteed character to to passwordInProgress
+  for (var i =0; i < guaranteedChars.length; i++) {
+    passwordInProgress[i] = guaranteedChars[i];
+  }
+
+  // Transform passwordInProgress to a string and pass it into writePassword
+  return passwordInProgress.join("");
 }
 
 // Get references to the #generate element
